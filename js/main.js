@@ -9,7 +9,8 @@ $(document).ready(function() {
 
   //ciclo che genera i numeri casuali
   for (var i = 0; i < 5; i++) {
-    randomNumber = alert(Math.floor(Math.random() * (max - min + 1)) + min)
+    randomNumber = (Math.floor(Math.random() * (max - min + 1)) + min)
+    alert(randomNumber)
     randomNuberlList.push(randomNumber);
   }
 
@@ -18,13 +19,13 @@ $(document).ready(function() {
   console.log(randomNuberlList);
 
   //set del timer
-  var timeInSeconds = 0
-  $('timer').text(timeInSeconds)
+  var timeInSeconds = 30;
+  $('#timer').text(timeInSeconds)
 
   var interval = setInterval(function(){
-    timeInSeconds++;
-    $('timer').text(timeInSeconds)
-  },30000)
+    timeInSeconds--;
+    $('#timer').text(timeInSeconds)
+  }, 1000)
 
   //timeout result
   setTimeout(function() {
@@ -33,11 +34,10 @@ $(document).ready(function() {
 
     for (var i = 0; i < 5; i++) {
       userNumber = parseInt(prompt("inserisci i numeri che ricordi"));
-      for (var f = 0; f < randomNuberlList.length; f++) {
-        if (userNumber == randomNuberlList[f]) {
+
+        if (randomNuberlList.includes(userNumber)) {
           userNumberList.push(userNumber);
         }
-      }
     }
     alert("Hai indovinato " + userNumberList.length + " numeri. Esattamente i numeri: " + userNumberList)
     console.log(userNumberList)
